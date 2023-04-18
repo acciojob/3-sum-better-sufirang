@@ -1,19 +1,20 @@
 function threeSum(arr, target) {
 // write your code here
-nums.sort((a, b) => a - b); // sort the array in ascending order
-  let closestSum = Infinity; // initialize closest sum to a large value
-  for (let i = 0; i < nums.length - 2; i++) {
-    let left = i + 1;
-    let right = nums.length - 1;
-    while (left < right) {
-      let sum = nums[i] + nums[left] + nums[right];
-      if (Math.abs(target - sum) < Math.abs(target - closestSum)) {
+  
+  arr.sort((a, b) => a - b); // Sort the array in non-decreasing order
+  let closestSum = Infinity;
+  for (let i = 0; i < arr.length - 2; i++) {
+    let j = i + 1;
+    let k = arr.length - 1;
+    while (j < k) {
+      const sum = arr[i] + arr[j] + arr[k];
+      if (Math.abs(sum - target) < Math.abs(closestSum - target)) {
         closestSum = sum;
       }
       if (sum < target) {
-        left++;
+        j++;
       } else {
-        right--;
+        k--;
       }
     }
   }
